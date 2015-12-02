@@ -161,9 +161,9 @@ The description section is a markdown enabled, free-form area, for your team to 
 
 ## Security Schemes
 
-Typically, an API has one or more ways to authenticate a request. The method could be API key authentication via headers or query string, basic authentication, OAuth, etc. The security schemes section allows you to define one or more of these authentication methods, with defaults. Later, when defining endpoints, you can [reference any security schemes](/docs/designer/#endpoints-authentication) you've defined here.
+Typically, an API has one or more ways to authenticate a request. The method could be API key authentication via headers or query string, basic authentication, OAuth, etc. The security schemes section allows you to define one or more of these authentication methods, with defaults. Later, when defining endpoints, you can [use any project security schemes](/docs/designer/#endpoints-authentication) you've defined.
 
-Security schemes defined on a project are compatible with the [SL.variables](/docs/designer/#environments-sl-variables) system. This means that, for example, you could set Bearer \`<<apiKey>>\` as the default value for your "Authentication" header. Then, when using various features in the designer like "Send Test Request", your authentication header will automatically be added to the request, with the correct apiKey filled in by the variables system.
+Security schemes defined on a project support with the [SL.variables](/docs/designer/#environments-sl-variables) system. This means that, for example, you could set Bearer \`<<apiKey>>\` as the default value for your "Authentication" header. Then, when using various features in the designer like "Send Test Request", your authentication header will automatically be added to the request, with the correct apiKey filled in by the variables system.
 
 # Environments
 
@@ -349,7 +349,7 @@ All requests that pass through the Prism API Proxy (wether sent from the API Des
 
 [Markdown](http://daringfireball.net/projects/markdown/) is used in several places throughout the designer.
 It's even used to [power these docs](https://github.com/stoplightio/documentation)! When working with markdown in the designer,
-you have access to most of the syntax, as well as a few extra StopLight-specific directives. Here is a handy markdown syntax
+you have access to most of the standard syntax, as well as a few extra StopLight-specific directives. Here is a handy markdown syntax
 [cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
 ## Sections
@@ -389,10 +389,8 @@ To include code snippets in your markdown, use three backticks, as shown below.
 
 To include videos (vimeo or youtube), use the syntax below. The value in the parenthesis is the video id.
 
-    \`\`\`
     @[vimeo](147427619)
     @[youtube](MX00rGu92gQ)
-    \`\`\`
 
 # JSON Schema Editor
 
@@ -509,6 +507,22 @@ Check out the [getting started](/docs/designer/#getting-started) guide / video f
 ## Mock Server
 
 Once you have your API defined, and mocking set up, you can download the Prism API Proxy and run a mock server wherever you like. Prism is a single small, dependency free binary file, easily run from the command line. The only argument when you run Prism is the path to the .json configuration files. The API Designer can generate these files for you! Make sure you have an environment selected, and then click the "Download -> Definitions Zip" button in the bottom right of the designer. There is a readme in that zip file with simple instructions on how to run your Prism instance.
+
+# Middleware
+
+The Prism API proxy supports simple scripts, written in javascript, that can be used to manipulate and react to HTTP traffic in
+various ways. The API designer supports the writing of these scripts in both the environment and endpoint editors.
+
+Scripts written at the environment level will be run on ALL requests that pass through Prism proxy for this environment.
+
+Scripts written at the endpoint level will only be run on requests that match the endpoint's HTTP method and path.
+
+The before script has access to the request, and is run before the request is forwarded to your api server.
+
+The after script has access to the request and the response, and is run after the request has been processed by your API and
+is on its way back to the caller.
+
+Much more information coming soon in the dedicated [Prism proxy documentation](/docs/proxy).
 
 # API Discovery
 
