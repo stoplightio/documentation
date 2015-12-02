@@ -329,6 +329,16 @@ If the response is HTML (looking at you Rails error pages), the rendered section
 
 Along the top bar of the response you'll notice extra tags indicating whether validation passed, the response was mocked, or if the response was hijacked. These are all features of the Prism API Proxy, that we expose in the API Designer. If validation failed, there will be an additional subsection called "Messages" that details the validation errors.
 
+## Tags
+
+Requests and responses will be marked with special tags in the entry editor UI. These tags include:
+
+- __Validation Passed__: Did the request/response validation pass?
+- __Validation Failed__: Did the request/response validation fail?
+- __Mocked__: Was the response mocked?
+- __Transformed__: Was the request/response transformed in any way by a middleware script?
+- __Hijacked__: Was the response hijacked in a middleware script?
+
 ## Code Generation
 
 As you fill out the request details, the code generation section will live update. If you are using any SL.variables in your request, they will be replaced in the code generator. Keeping an eye on the generated code is a good way to make sure your SL.variables are working correctly!
