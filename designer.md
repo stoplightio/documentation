@@ -518,6 +518,19 @@ Check out the [getting started](/docs/designer/#getting-started) guide / video f
 
 Once you have your API defined, and mocking set up, you can download the Prism API Proxy and run a mock server wherever you like. Prism is a single small, dependency free binary file, easily run from the command line. The only argument when you run Prism is the path to the .json configuration files. The API Designer can generate these files for you! Make sure you have an environment selected, and then click the "Download -> Definitions Zip" button in the bottom right of the designer. There is a readme in that zip file with simple instructions on how to run your Prism instance.
 
+# Validation
+
+Prism proxy will automatically contract test, or validate, incoming requests against their endpoint definition. It applies
+the request and response json schema definitions for the matched endpoint to the requests body and response body, and
+stores any errors.
+
+If the request does not match any endpoint, validation is not run.
+
+The results of this validation will be shown as a "Validation Passed" or "Validation Failed" tag in the entry editor ui.
+
+You can also perform custom logic in middleware scripts, and manually set validation to passed or failed for a request. More
+information on this coming soon in the full Prism proxy documentation.
+
 # Middleware
 
 The Prism API proxy supports simple scripts, written in javascript, that can be used to manipulate and react to HTTP traffic in
