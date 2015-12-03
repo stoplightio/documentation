@@ -561,6 +561,7 @@ API, which it will subsequently use to automatically generate endpoint definitio
 API endpoint discovery is the quickest way to stub out comprehensive definitions for an existing API.
 
 ### It will:
+
 - Identify the method and path combination that uniquely identifies the endpoint.
 - Identify dynamic path parameters if possible.
 - Generate query string JSON Schema.
@@ -568,7 +569,12 @@ API endpoint discovery is the quickest way to stub out comprehensive definitions
 - Generate request body JSON Schema.
 - Generate response definitions, including the content type, JSON Schema, and example.
 
-Read more about it in our [blog post series](https://blog.stoplight.io/api-endpoint-discovery-part-i/).
+::: meta
+### Read more about it in our blog post series.
+
+- [Part I](https://blog.stoplight.io/api-endpoint-discovery-part-i)
+- [Part II](https://blog.stoplight.io/api-endpoint-discovery-part-ii)
+:::
 
 # Questions?
 
