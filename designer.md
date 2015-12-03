@@ -44,7 +44,7 @@ We'll be creating a an API to manage pets, similar to one of the canonical Swagg
 [petstore](http://petstore.swagger.io/v2/swagger.json). You could, of course, import that Swagger file into a new
 StopLight project, but we'll be creating a slightly different API by hand.
 
-Follow along in the video, or read below.
+Follow along in the video, and/or read below.
 
 ::: meta
 @[vimeo](147427619)
@@ -310,6 +310,12 @@ Please check out the Prism API Proxy documentation for more details on the varia
 The API Designer includes a full-blown HTTP request maker, and code generator.
 
 To send a request, first make sure you have selected a Workspace->Project->Environment. After selecting an environment and clicking on the requests tab, simply choose an HTTP method, fill in the absolute URL, and click send! After a second or two, you should see the full details of the response.
+
+Follow along in the video, and/or read below.
+
+::: meta
+@[vimeo](147684195)
+:::
 
 ## Request Options
 
