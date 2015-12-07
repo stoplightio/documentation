@@ -21,16 +21,16 @@ Currently, the StopLight API Designer supports:
 We have one-click importers and exporters for Swagger and RAML, and much of our internal tooling, from validation, to definition generation, is built around a subset of JSON Schema. __When you define your API in StopLight, you are not locked in to StopLight__. Our goal is to help you build and maintain thorough, AND portable, API definitions.
 
 ::: meta
-### We are here to help!
+  ### We are here to help!
 
-- Email: support@stoplight.io
-- Twitter: [@stoplightio](https://twitter.com/stoplightio)
-- [Slack](https://slack.stoplight.io)
-- Chat: Click the chat button in the bottom right of the designer.
+  - Email: support@stoplight.io
+  - Twitter: [@stoplightio](https://twitter.com/stoplightio)
+  - [Slack](https://slack.stoplight.io)
+  - Chat: Click the chat button in the bottom right of the designer.
 
-### Found an issue with these docs?
+  ### Found an issue or typo in these docs?
 
-Help us out and submit a pull request in our docs [git repository](https://github.com/stoplightio/documentation).
+  Help us out and submit a pull request in our docs [git repository](https://github.com/stoplightio/documentation).
 :::
 
 You can reach us by email at support@stoplight.io, or on Twitter [@stoplightio](https://twitter.com/stoplightio).
@@ -47,7 +47,7 @@ StopLight project, but we'll be creating a slightly different API by hand.
 Follow along in the video, and/or read below.
 
 ::: meta
-@[vimeo](147427619)
+  @[vimeo](147427619)
 :::
 
 ## API Setup
@@ -172,6 +172,14 @@ A project has many environments. Environments let you scope SL.variables, and ma
 ## Proxy Settings
 
 The proxy settings are only applicable to the app version of StopLight. These settings affect the local instance of Prism Proxy that the app can optionally run on your computer.
+
+- __Port__: The port on your computer that the proxy will be run on.
+- __Startup Message__: When the proxy starts up, it will output this message to std out.
+- __API Discovery__: When toggled on, the proxy will use HTTP traffic flowing through it to generate endpoint definitions.
+- __Global Mocking__: When toggled on, the proxy will mock every request that passes through it, that matches a defined endpoint. It will mock back the example from the first defined response on the matched endpoint.
+- __Custom SSL__: If you are trying to process traffic to/from an api serving over HTTPS, and don't want to use the certificate included by default with Prism, you can input your own here.
+
+Read about the proxy bar [here](/docs/designer/#proxy).
 
 ## SL.variables
 
@@ -314,7 +322,7 @@ To send a request, first make sure you have selected a Workspace->Project->Envir
 Follow along in the video, and/or read below.
 
 ::: meta
-@[vimeo](147684195)
+  @[vimeo](147684195)
 :::
 
 ## Request Options
@@ -361,6 +369,24 @@ All requests sent via the API Designer are logged to the current environment, an
 
 All requests that pass through the Prism API Proxy (wether sent from the API Designer) or not, are also logged to the appropriate environment. This means that you can point your mobile app, or API consumer, at the Prism Proxy host (either our hosted proxy instance, or a local instance on your computer), and the requests will be logged to the API Designer for debugging.
 
+# Proxy
+
+The app version of the API Designer can run and manage a local instance of the [Prism API Proxy](http://stoplight.io/prism) on your computer.
+
+On environment and request editors, you can find the proxy bar at the bottom of your screen. This bar displays information about
+the proxy instance currently in use by the designer.
+
+When sending requests via the request editor, the API Designer will send the request through whichever proxy instance (local vs hosted) you have currently selected
+in the proxy bar.
+
+Each environment gets its own hosted Prism instance, which is linked under "Location" in the proxy bar.
+
+::: meta
+  Find the proxy bar at the bottom of environment and request editors.
+
+  ![Proxy Bar Image](https://assets.stoplight.io/images/docs-proxy-bar.png)
+:::
+
 # Markdown
 
 [Markdown](http://daringfireball.net/projects/markdown/) is used in several places throughout the designer.
@@ -375,7 +401,7 @@ There are two ways to create sections.
 
 H1 tags, or those created with a single \`#\` character, automatically create a new section.
 
-The special section directive will create a section around it's contents.
+The special section directive will create a section around it's contents. You may only use a section before any H1 tags (ie at the start of a document).
 
     ::: section
     I am a descrete section.
@@ -570,10 +596,10 @@ API endpoint discovery is the quickest way to stub out comprehensive definitions
 - Generate response definitions, including the content type, JSON Schema, and example.
 
 ::: meta
-### Read more about it in our blog post series.
+  ### Read more about it in our blog post series.
 
-- [Part I](https://blog.stoplight.io/api-endpoint-discovery-part-i)
-- [Part II](https://blog.stoplight.io/api-endpoint-discovery-part-ii)
+  - [Part I](https://blog.stoplight.io/api-endpoint-discovery-part-i)
+  - [Part II](https://blog.stoplight.io/api-endpoint-discovery-part-ii)
 :::
 
 # Questions?
