@@ -4,9 +4,9 @@ Hi there, and welcome to StopLight!
 
 Thorough, accurate definitions are the foundation of a good API. StopLight includes many utilities that make it easier to both define your API, and maintain those definitions. The way that you use StopLight will depend largely on the maturity of your API, and your goals.
 
-For example, if you have a pre-existing API, you will likely be interested in our [API Discovery](/docs/designer/#api-discovery) features to help you quickly stub out your endpoint definitions and schemas.
+For example, if you have a pre-existing API, you will likely be interested in our [API Discovery](/docs/designer/api-discovery) features to help you quickly stub out your endpoint definitions and schemas.
 
-For new APIs, we recommend an approach where you design the API first in StopLight, and rely on our [mocking](/docs/designer/#mocking) and [validation](/docs/designer/#validation) features as you build the backend(s) out.
+For new APIs, we recommend an approach where you design the API first in StopLight, and rely on our [mocking](/docs/designer/mocking) and [validation](/docs/designer/validation) features as you build the backend(s) out.
 
 ## Lock In
 
@@ -52,13 +52,13 @@ Follow along in the video, and/or read below.
 
 ## API Setup
 
-First things first, we need a [workspace](/docs/designer/#workspaces).
+First things first, we need a [workspace](/docs/designer/workspaces).
 Every new account comes with an automatic "Personal" workspace. Select that, or create a new Workspace.
 
-Next, we will create a new [project](/docs/designer/#projects) to house our API. In StopLight, you usually use one project per API.
+Next, we will create a new [project](/docs/designer/projects) to house our API. In StopLight, you usually use one project per API.
 Give the project a name, and click the "Create" button at the top of the editor.
 
-Finally, we need to configure an [environment](/docs/designer/#environments). You will typically have one environment
+Finally, we need to configure an [environment](/docs/designer/environments). You will typically have one environment
 per location your API is running (development, staging, production, etc).
 Sometimes it also makes sense to create an environment per team member, so that each member can manage their own
 variables and proxy settings.
@@ -67,7 +67,7 @@ For now, we'll just use the default "Master" environment. This environment is cr
 and cannot be deleted. Even though our API is not yet built, you should fill in an API host. For now, use
 \`http://localhost:3000\`. Next, click on the "Proxy Settings" tab, toggle on "Global Mocking",
 and then hit "Save" at the top of the editor. This will
-turn on [mocking](/docs/designer/#mocking) for all of the endpoints, essentially putting online a fake version
+turn on [mocking](/docs/designer/mocking) for all of the endpoints, essentially putting online a fake version
 of our API, as we define it.
 
 We're ready to start defining our API!
@@ -80,10 +80,10 @@ Let's define an endpoint that will return a pet's data.
 
 1. Click on the endpoints tab.
 2. Give the endpoint a name, "Get Pet".
-4. Set the path to "/pets/{petId}". The curly brackets there denote a [path parameter](/docs/designer/#endpoints-path-parameters).
+4. Set the path to "/pets/{petId}". The curly brackets there denote a [path parameter](/docs/designer/endpoints-path-parameters).
 5. Click "Create" at the top of the editor.
 6. Click the "Responses" endpoint editor tab.
-7. Click the plus icon in the left sidebar to create a new response. The [JSON Schema Editor](/docs/designer/#json-schema-editor) will pop up. This is where you can define the shape of the pet response.
+7. Click the plus icon in the left sidebar to create a new response. The [JSON Schema Editor](/docs/designer/json-schema-editor) will pop up. This is where you can define the shape of the pet response.
 8. In the JSON Schema Editor, click the example tab, and paste in the example JSON below.
 9. Click the "Generate Definition From Example" button to automatically generate a JSON Schema from the example.
 10. Click "Save" at the top of the editor.
@@ -98,7 +98,7 @@ Let's define an endpoint that will return a pet's data.
 \`\`\`
 
 That's it, first endpoint down! Click the "Reference" endpoint editor tab to check out the auto generated
-[reference](/docs/designer/#endpoints-reference).
+[reference](/docs/designer/endpoints-reference).
 
 ## Sending a Request
 
@@ -138,6 +138,12 @@ receive an email with instructions on how to claim their StopLight account, and 
 
 Workspaces allow you to group together projects - like your internal and external APIs, microservices, etc - under one account. You can easily invite teammates to manage your APIs and consolidate all projects under one billing account. It all starts with a Workspace - it is the top level resource in the API Designer.
 
+Check out the video to get a brief overview of workflow in the API Designer, and how things are organized.
+
+::: meta
+  @[vimeo](148686926)
+:::
+
 ## Inviting Members
 
 You can easily invite other team members by email to collaborate on your workspace. Updates in the API Designer propagate to all team members in real-time. If the person that you are inviting does not yet have a StopLight account, one will be created for them, and they will be emailed instructions on how to claim the account and get started.
@@ -161,9 +167,9 @@ The description section is a markdown enabled, free-form area, for your team to 
 
 ## Security Schemes
 
-Typically, an API has one or more ways to authenticate a request. The method could be API key authentication via headers or query string, basic authentication, OAuth, etc. The security schemes section allows you to define one or more of these authentication methods, with defaults. Later, when defining endpoints, you can [use any project security schemes](/docs/designer/#endpoints-authentication) you've defined.
+Typically, an API has one or more ways to authenticate a request. The method could be API key authentication via headers or query string, basic authentication, OAuth, etc. The security schemes section allows you to define one or more of these authentication methods, with defaults. Later, when defining endpoints, you can [use any project security schemes](/docs/designer/endpoints-authentication) you've defined.
 
-Security schemes defined on a project support with the [SL.variables](/docs/designer/#environments-sl-variables) system. This means that, for example, you could set Bearer \`<<apiKey>>\` as the default value for your "Authentication" header. Then, when using various features in the designer like "Send Test Request", your authentication header will automatically be added to the request, with the correct apiKey filled in by the variables system.
+Security schemes defined on a project support the [SL.variables](/docs/designer/environments-sl-variables) system. This means that, for example, you could set \`Bearer <<apiKey>>\` as the default value for your "Authentication" header. Then, when using various features in the designer like "Send Test Request", your authentication header will automatically be added to the request, with the correct apiKey filled in by the variables system.
 
 # Environments
 
@@ -179,13 +185,13 @@ The proxy settings are only applicable to the app version of StopLight. These se
 - __Global Mocking__: When toggled on, the proxy will mock every request that passes through it, that matches a defined endpoint. It will mock back the example from the first defined response on the matched endpoint.
 - __Custom SSL__: If you are trying to process traffic to/from an api serving over HTTPS, and don't want to use the certificate included by default with Prism, you can input your own here.
 
-Read about the proxy bar [here](/docs/designer/#proxy).
+Read about the proxy bar [here](/docs/designer/proxy).
 
 ## SL.variables
 
 SL.variables is a JSON object. You can use any properties defined on this object in your endpoint definitions, scripts, and the request maker. Simply surround the property name with <<brackets>>. For example, if you add a header in the request maker with the name "Authentication", and value "Bearer \`<<apiKey>>\`", \`<<apiKey>>\` will be replaced by whatever value is set at SL.variables.apiKey before sending the request.
 
-You can assign values to SL.variables in your before/after scripts, and they will update in this section. More details in the [SL.variables docs](/docs/designer/#sl-variables).
+You can assign values to SL.variables in your before/after scripts, and they will update in this section. More details in the [SL.variables docs](/docs/designer/sl-variables).
 
 ## Import
 
@@ -215,7 +221,8 @@ To define a endpoint:
 1. Make or select a Workspace->Project->Environment.
 2. Click on the endpoints tab to start creating a new endpoint.
 3. Give the endpoint a name, method, and url.
-  * The url should be relative, not absolute. For example, \`/posts\`, not \`http://api.example.com/posts\`. You define the API root/host in the environment's settings. This is a more flexible approach to defining the API, and makes it easy to switch out the root location of your endpoints.
+
+__Note:__ The url should be relative, not absolute. For example, \`/posts\`, not \`http://api.example.com/posts\`. You define the API root/host in the environment's settings. This is a more flexible approach to defining the API, and makes it easy to switch out the root location of your endpoints.
 
 ## Path Parameters
 
@@ -239,7 +246,7 @@ Endpoint.responses | Individual sections for each defined response code, with ex
 
 ## Mocking
 
-Turn mocking on or off for this endpoint. If an incoming request matches this endpoint's HTTP method and path, it will be mocked. More detail in the [mocking](/docs/designer/#mocking) section of the documentation.
+Turn mocking on or off for this endpoint. If an incoming request matches this endpoint's HTTP method and path, it will be mocked. More detail in the [mocking](/docs/designer/mocking) section of the documentation.
 
 ## Authentication
 
@@ -305,13 +312,28 @@ You use schemas by referencing them in other schemas. To do this, we use the $re
 
 # Functions
 
-Functions allow you to re-use scripting functionality across your project. They are made available in your before/after scripts under the SL.utilities namespace.
+Functions allow you to re-use scripting functionality across your project. They are made available in your before/after
+scripts under the SL.utilities namespace.
 
-To define an function, first make sure you have selected a Workspace->Project->Environment. After selecting an environment and clicking on the functions tab, the first thing you'll want to do is give the function a name and optional description. The name must be a valid javascript variable! Your function will be made available in scripts under the SL.utilities namespace, with the name you set here. For example, if you name your function "addValidationHeader", then you can call it in other scripts with SL.utilities.addValidationHeader.
+To define a function, first make sure you have selected a Workspace->Project->Environment. After selecting an
+environment and clicking on the functions tab, the first thing you'll want to do is give the function a name and an
+optional description. The name must be a valid javascript variable! Your function will be made available in scripts
+under the SL.utilities namespace, with the name you set here. For example, if you name your function
+"addValidationHeader", then you can call it in other scripts with \`SL.utilities.addValidationHeader(arg1, arg2);\`.
+
+The script should be a single, anonymous function, with whatever custom arguments you need.
+For example, this script will add an authorization header to a request.
+
+\`\`\` javascript
+function(request, value) {
+  request.header.set('Authorization', value);
+}
+\`\`\`
 
 We automatically add several useful functions to every project. Read the descriptions on each to get a feel for what they do.
 
-Please check out the Prism API Proxy documentation for more details on the variables, features, and functions available to scripts (including functions).
+Please check out the [Prism](/docs/proxy/javascript-api) API Proxy documentation for more details on the variables, features, and objects
+available to scripts (including functions).
 
 # Requests
 
@@ -502,7 +524,7 @@ be automatically replaced for you.
 ### Project Security Schemes
 
 Often your API will have one or more authentication mechanisms. Read more about project security schemes
-[here](/docs/designer/#projects-security-schemes). You can use variables in your security schemes by using the
+[here](/docs/designer/projects-security-schemes). You can use variables in your security schemes by using the
 \`<<variableName>>\` notation.
 
 For example, you could use the apiKey -> header security scheme, and set the header name to \`Authorization\`, and the
@@ -544,7 +566,7 @@ You can turn on mocking dynamically in before/after scripts, or on a per endpoin
 
 When mocking is on for an endpoint, any request matched to that endpoint (whether sent via the API Designer, or sent directly to the hosted or local instance of Prism API Proxy), will be mocked. Prism will not forward the request to the environment's API host, and will instead immediately return the response example defined in the endpoint.
 
-Check out the [getting started](/docs/designer/#getting-started) guide / video for a quick introduction to mocking.
+Check out the [getting started](/docs/designer/getting-started) guide / video for a quick introduction to mocking.
 
 ## Mock Server
 
@@ -595,12 +617,10 @@ API endpoint discovery is the quickest way to stub out comprehensive definitions
 - Generate request body JSON Schema.
 - Generate response definitions, including the content type, JSON Schema, and example.
 
-::: meta
-  ### Read more about it in our blog post series.
+### Read more about it in our blog post series.
 
-  - [Part I](https://blog.stoplight.io/api-endpoint-discovery-part-i)
-  - [Part II](https://blog.stoplight.io/api-endpoint-discovery-part-ii)
-:::
+- [Part I](https://blog.stoplight.io/api-endpoint-discovery-part-i)
+- [Part II](https://blog.stoplight.io/api-endpoint-discovery-part-ii)
 
 # Questions?
 
