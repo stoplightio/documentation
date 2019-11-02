@@ -65,7 +65,7 @@ variables and proxy settings.
 
 For now, we'll just use the default "Master" environment. This environment is created automatically for every project,
 and cannot be deleted. Even though our API is not yet built, you should fill in an API host. For now, use
-\`http://localhost:3000\`. Next, click on the "Proxy Settings" tab, toggle on "Global Mocking",
+http://localhost:3000. Next, click on the "Proxy Settings" tab, toggle on "Global Mocking",
 and then hit "Save" at the top of the editor. This will
 turn on [mocking](/docs/designer/mocking) for all of the endpoints, essentially putting online a fake version
 of our API, as we define it.
@@ -88,14 +88,14 @@ Let's define an endpoint that will return a pet's data.
 9. Click the "Generate Definition From Example" button to automatically generate a JSON Schema from the example.
 10. Click "Save" at the top of the editor.
 
-\`\`\`
+```
 {
   "id": 123,
   "name": "Cody",
   "breed": "Rhodesian Ridgeback",
   "awesome": true
 }
-\`\`\`
+```
 
 That's it, first endpoint down! Click the "Reference" endpoint editor tab to check out the auto generated
 [reference](/docs/designer/endpoints-reference).
@@ -169,7 +169,7 @@ The description section is a markdown enabled, free-form area, for your team to 
 
 Typically, an API has one or more ways to authenticate a request. The method could be API key authentication via headers or query string, basic authentication, OAuth, etc. The security schemes section allows you to define one or more of these authentication methods, with defaults. Later, when defining endpoints, you can [use any project security schemes](/docs/designer/endpoints-authentication) you've defined.
 
-Security schemes defined on a project support the [SL.variables](/docs/designer/environments-sl-variables) system. This means that, for example, you could set \`Bearer <<apiKey>>\` as the default value for your "Authentication" header. Then, when using various features in the designer like "Send Test Request", your authentication header will automatically be added to the request, with the correct apiKey filled in by the variables system.
+Security schemes defined on a project support the [SL.variables](/docs/designer/environments-sl-variables) system. This means that, for example, you could set `Bearer <<apiKey>>` as the default value for your "Authentication" header. Then, when using various features in the designer like "Send Test Request", your authentication header will automatically be added to the request, with the correct apiKey filled in by the variables system.
 
 # Environments
 
@@ -189,7 +189,7 @@ Read about the proxy bar [here](/docs/designer/proxy).
 
 ## SL.variables
 
-SL.variables is a JSON object. You can use any properties defined on this object in your endpoint definitions, scripts, and the request maker. Simply surround the property name with <<brackets>>. For example, if you add a header in the request maker with the name "Authentication", and value "Bearer \`<<apiKey>>\`", \`<<apiKey>>\` will be replaced by whatever value is set at SL.variables.apiKey before sending the request.
+SL.variables is a JSON object. You can use any properties defined on this object in your endpoint definitions, scripts, and the request maker. Simply surround the property name with <<brackets>>. For example, if you add a header in the request maker with the name "Authentication", and value `Bearer <<apiKey>>`, `<<apiKey>>` will be replaced by whatever value is set at SL.variables.apiKey before sending the request.
 
 You can assign values to SL.variables in your before/after scripts, and they will update in this section. More details in the [SL.variables docs](/docs/designer/sl-variables).
 
@@ -222,13 +222,13 @@ To define a endpoint:
 2. Click on the endpoints tab to start creating a new endpoint.
 3. Give the endpoint a name, method, and url.
 
-__Note:__ The url should be relative, not absolute. For example, \`/posts\`, not \`http://api.example.com/posts\`. You define the API root/host in the environment's settings. This is a more flexible approach to defining the API, and makes it easy to switch out the root location of your endpoints.
+__Note:__ The url should be relative, not absolute. For example, `/posts`, not `http://api.example.com/posts`. You define the API root/host in the environment's settings. This is a more flexible approach to defining the API, and makes it easy to switch out the root location of your endpoints.
 
 ## Path Parameters
 
-Endpoint paths often include dynamic parts. To define dynamic path parameters in your endpoint path, simply wrap the parameter name in \`{brackets}\`.
+Endpoint paths often include dynamic parts. To define dynamic path parameters in your endpoint path, simply wrap the parameter name in `{brackets}`.
 
-For example, the paths \`/posts/1\` and \`/posts/2\` represent the same endpoint. The path for this endpoint is, in reality, \`/posts/{postId}\`.
+For example, the paths `/posts/1` and `/posts/2` represent the same endpoint. The path for this endpoint is, in reality, `/posts/{postId}`.
 
 ## Reference
 
@@ -319,16 +319,16 @@ To define a function, first make sure you have selected a Workspace->Project->En
 environment and clicking on the functions tab, the first thing you'll want to do is give the function a name and an
 optional description. The name must be a valid javascript variable! Your function will be made available in scripts
 under the SL.utilities namespace, with the name you set here. For example, if you name your function
-"addValidationHeader", then you can call it in other scripts with \`SL.utilities.addValidationHeader(arg1, arg2);\`.
+"addValidationHeader", then you can call it in other scripts with `SL.utilities.addValidationHeader(arg1, arg2);`.
 
 The script should be a single, anonymous function, with whatever custom arguments you need.
 For example, this script will add an authorization header to a request.
 
-\`\`\` javascript
+```javascript
 function(request, value) {
   request.header.set('Authorization', value);
 }
-\`\`\`
+```
 
 We automatically add several useful functions to every project. Read the descriptions on each to get a feel for what they do.
 
@@ -351,7 +351,7 @@ Follow along in the video, and/or read below.
 
 We support most HTTP request options via our request maker. You can add/edit headers, path parameters, query string parameters, basic authentication, and the request body.
 
-Every input in the request options supports the SL.variables system. If you have a variable defined on your environment called apiKey, you can use it anywhere in the request maker by surrounding it in brackets, ie \`<<apiKey>>\`. Check out the code generation tab to see if the variable is replaced correctly in the resulting request. When you click send, the API Designer will replace all variables before sending the request off.
+Every input in the request options supports the SL.variables system. If you have a variable defined on your environment called apiKey, you can use it anywhere in the request maker by surrounding it in brackets, ie `<<apiKey>>`. Check out the code generation tab to see if the variable is replaced correctly in the resulting request. When you click send, the API Designer will replace all variables before sending the request off.
 
 Currently, we don't support multi-part file uploads. Please get in touch if this is an important feature for your project.
 
@@ -421,7 +421,7 @@ you have access to most of the standard syntax, as well as a few extra StopLight
 Sections add padding, and a top border, to mark them off from the rest of the content. You can see them in use in this documentation.
 There are two ways to create sections.
 
-H1 tags, or those created with a single \`#\` character, automatically create a new section.
+H1 tags, or those created with a single `#` character, automatically create a new section.
 
 The special section directive will create a section around it's contents. You may only use a section before any H1 tags (ie at the start of a document).
 
@@ -443,11 +443,11 @@ is in.
 
 To include code snippets in your markdown, use three backticks, as shown below.
 
-    \`\`\`json
+    ```json
     {
       "foo": "bar"
     }
-    \`\`\`
+    ```
 
 ## Videos
 
@@ -492,11 +492,11 @@ via the code editor in this tab.
 ### Middleware Scripts
 
 You can save values back to the current environment's variables in before and after scripts. Simply assign a
-value to the SL.variables object. For example, if you have a \`POST /login\`  endpoint
+value to the SL.variables object. For example, if you have a `POST /login`  endpoint
 in your API that responds with an apiKey, you could setup the after script for that endpoint to
 automatically save the apiKey to SL.variables when called.
 
-\`\`\`javascript
+```javascript
 // An example endpoint after script
 function (ctx, request, response) {
   var body = response.body.get();
@@ -507,16 +507,16 @@ function (ctx, request, response) {
     SL.variables.apiKey = body.apiKey;
   }
 }
-\`\`\`
+```
 
-With this simple script, whenever a request flows through Prism to \`POST /login\`, the latest valid apiKey will
+With this simple script, whenever a request flows through Prism to `POST /login`, the latest valid apiKey will
 automatically be saved to your environment, ready for use!
 
 ## Using Variables
 
 There are four primary places to use variables - project security schemes, endpoint definitions, JSON Schemas, and scripts.
 As a general rule of thumb, you can use variables throughout most of the designer by surrounding the variable name in
-\`<<variableName>>\`. You can access variables in scripts through the SL.variables object, ie \`SL.variables.variableName\`.
+`<<variableName>>`. You can access variables in scripts through the SL.variables object, ie `SL.variables.variableName`.
 
 If you use variables in the designer, when you use the send test request feature, these values will
 be automatically replaced for you.
@@ -525,35 +525,35 @@ be automatically replaced for you.
 
 Often your API will have one or more authentication mechanisms. Read more about project security schemes
 [here](/docs/designer/projects-security-schemes). You can use variables in your security schemes by using the
-\`<<variableName>>\` notation.
+`<<variableName>>` notation.
 
-For example, you could use the apiKey -> header security scheme, and set the header name to \`Authorization\`, and the
-value to \`Bearer <<apiKey>>\`. With this setup, any endpoints that use this security scheme will have this header
+For example, you could use the apiKey -> header security scheme, and set the header name to `Authorization`, and the
+value to `Bearer <<apiKey>>`. With this setup, any endpoints that use this security scheme will have this header
 automatically added when you use the "send test request" button, and the apiKey variable will be replaced when you
 send the request.
 
 ### Endpoint Definitions
 
-Use the \`<<variableName>>\` anywhere in the endpoint's definition. This includes the request headers, query string,
+Use the `<<variableName>>` anywhere in the endpoint's definition. This includes the request headers, query string,
 and body.
 
 ### JSON Schemas
 
-You can use the \`<<variableName>>\` notation as a default value for any of the fields in your JSON Schemas. To
+You can use the `<<variableName>>` notation as a default value for any of the fields in your JSON Schemas. To
 set a default value, click the toolbox icon on the left side of any property. When you use the "send test request" feature,
 any default values with variables will be replaced when you send the request.
 
 ### Middleware Scripts
 
-Access variables in middleware before / after scripts via the \`SL.variables\` object. For example:
+Access variables in middleware before / after scripts via the `SL.variables` object. For example:
 
-\`\`\`javascript
+```javascript
 // An example before script
 function (ctx, request) {
   var apiKey = SL.variables.apiKey;
   request.header.set('Authorization', 'Bearer ' + apiKey);
 }
-\`\`\`
+```
 
 ## Special Variables
 
